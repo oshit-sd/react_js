@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>React JS</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script>
+        // let root = document.getElementById("root");
+        // console.log(React.version);
+        // let el = document.createElement("h1");
+        // el.innerText = "React by OSHIT";
+        // root.appendChild(el); //DOM element
+    </script>
+    <script>
+        // ep 1, 2 
+        // let el = React.createElement("h1", { children: "React by OSHIT" }); // using props, this things are same
+        // let el = React.createElement("h1", null, "React by OSHIT");  // this things are same
+        // ReactDOM.render(el, document.getElementById("root"));
+    </script>
+    <script>
+        // ep 3
+        // let innerSpan = React.createElement("span", null, "React by OSHIT");
+        // let el = React.createElement("h1", { children: innerSpan }); // using props, this things are same
+        // let el = React.createElement("h1", null, innerSpan);  // this things are same
+        // ReactDOM.render(el, document.getElementById("root"));
+    </script>
+    <script type="text/babel">
+        // ep 3 , using jsx
+        // let myel = (
+        //     <div>
+        //         <h1>
+        //             <span>Hello JSX</span>
+        //         </h1>
+        //     </div>
+        // )
+        // ReactDOM.render(myel, document.getElementById("root"));
+    </script>
+    <script type="text/babel">
+        // ep 5 , using jsx variabele
+        // let myTitle = "Hello JSX";
+        // let myH1 = (
+        //     <h1>
+        //         <span>{myTitle}</span>
+        //     </h1>
+        // );
+        // let myel = (
+        //     <div>{myH1} </div>
+        // )
+        // ReactDOM.render(myel, document.getElementById("root"));
+    </script>
+    <script type="text/babel">
+        // ep 6 , Functional Component
+        // let myTitle = "Hello JSX";
+        // function MyH1() {
+        //     return (
+        //         <h1>
+        //             <span>{myTitle}</span>
+        //         </h1>
+        //     );
+        // }
+        // let MyH1 = function () {
+        //     return (
+        //         <h1>
+        //             <span>{myTitle}</span>
+        //         </h1>
+        //     );
+        // }
+        // let MyH1 = () => (
+        //     <h1>
+        //         <span>{myTitle}</span>
+        //     </h1>
+        // );
+        // console.log(MyH1);
+        // let myel = (
+        //     <div>
+        //         <MyH1 />
+        //     </div>
+        // )
+        // ReactDOM.render(myel, document.getElementById("root"));
+    </script>
+    <script type="text/babel">
+        // ep 7, Component Props
+
+        // function MyH1(props) {
+        //     return (
+        //         <h1>
+        //             <span>{props.myTitle}</span>
+        //         </h1>
+        //     );
+        // }
+        function MyH1({ myTitle }) {
+            return (
+                <h1>
+                    <span>{myTitle}</span>
+                </h1>
+            );
+        }
+        // console.log(MyH1);
+
+        let Myel = () => {
+            let myTitle = "Hello JSX Props";
+            return (
+                <div>
+                    <MyH1 myTitle={myTitle} />
+                </div>
+            );
+        }
+        ReactDOM.render(<Myel />, document.getElementById("root"));
+    </script>
+</body>
+
+</html>
