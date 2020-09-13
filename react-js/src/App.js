@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Images from "./components/Images";
 
 // function App({ title }) {
@@ -6,15 +6,28 @@ import Images from "./components/Images";
 // }
 function App() {
     const [title, setTitle] = useState("Hello Set state");
-    const [isShowing, setisShowing] = useState(null);
+    const [isShowing, setisShowing] = useState(false);
+    const [didMount, setdidMount] = useState(false)
+    const mountRef = useRef(false)
 
+    // component did mount only
     useEffect(() => {
+        setdidMount(true);
         console.log("App Mounted");
     }, [])
 
+    // component will updated (when we use some state value inside [], this is work for every time)
     useEffect(() => {
-        if (isShowing != null) {
+        // if (isShowing != null) {
+        //     console.log("App Updated");
+        // }
+        // if (didMount) {
+        //     console.log("App Updated");
+        // }
+        if (mountRef.current) {
             console.log("App Updated");
+        } else {
+            mountRef.current = true;
         }
     }, [isShowing])
 
