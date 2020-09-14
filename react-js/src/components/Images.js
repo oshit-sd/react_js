@@ -36,7 +36,7 @@ export default function Images() {
     function ShowImages() {
         return images.map(image => {
             return (
-                <div className="w-1/3">
+                <div className="w-1/3  my-3 flex justify-center">
                     <img src={image} width="150"></img>
                 </div>
             );
@@ -44,10 +44,18 @@ export default function Images() {
     }
 
     function handleAdd() {
-        setimages([
-            ...images,
-            "https://images.unsplash.com/photo-1599358093791-b884b4890ffd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        ])
+        if (newImage != "") {
+            setimages([
+                ...images,
+                newImage
+            ])
+            setnewImage = "";
+        }
+    }
+
+    const [newImage, setnewImage] = useState("")
+    function handleChange(event) {
+        setnewImage(event.target.value);
     }
 
     return (
@@ -61,10 +69,15 @@ export default function Images() {
             </div>
 
             <div className="flex justify-between my-5">
-                <input type="text" className="p-2 border border-gray-800 shadow rounded" />
-                <button onClick={handleAdd} className="p-2 bg-green-600 text-white">Add New</button>
+                {/* <input onChange={handleChange} type="text" className="p-2 border border-gray-800 shadow rounded" /> */}
+                <div class="w-full">
+                    <input value={newImage} onChange={handleChange} type="text" className="p-2 w-full border border-gray-800 shadow rounded" />
+                </div>
+                <div>
+                    <button onClick={handleAdd} disable={newImage == ""} className={`p-2 text-white ml-2 ${newImage != "" ? "bg-green-600" : "bg-green-300"}`} > Add </button>
+                </div>
             </div>
-        </section>
+        </section >
     )
 }
 

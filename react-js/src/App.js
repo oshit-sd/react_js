@@ -38,7 +38,7 @@ function App() {
         <section className="flex justify-center">
             {
                 console.log("App Render")}
-            <div className="w-1/2">
+            <div className="w-10/12 ">
                 <div className="my-4">
                     <div className="text-center">
                         <div className="my-4">
